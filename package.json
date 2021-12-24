@@ -1,0 +1,20 @@
+{
+  "name": "reactanimalapp",
+  "version": "1.0.0",
+  "description": "https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "v16.13.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
