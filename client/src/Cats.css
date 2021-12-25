@@ -1,0 +1,14 @@
+.cat-imgs {
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.cat-names-info {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: auto 0.7fr;
+  margin-top: 10px;
+}

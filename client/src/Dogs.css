@@ -1,0 +1,14 @@
+.dog-imgs {
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.dog-names-info {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.dog-grid {
+  display: grid;
+  grid-template-columns: auto 0.7fr;
+  margin-top: 10px;
+}
