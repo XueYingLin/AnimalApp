@@ -49,6 +49,14 @@ app.get('/addAnimal', async function (req, res, next) {
   }
 })
 
+app.get('/deleteAnimal', async (req, res) => {
+  const id = req.query.id
+
+  await AnimalService.deleteAnimal(id)
+
+  console.log('Deleted', id)
+})
+
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'))

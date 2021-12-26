@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MyNavBar from './MyNavbar'
 import './Dogs.css'
+import { Button } from 'react-bootstrap'
 
 export default function Dogs(props) {
   const [data, setData] = useState(null)
@@ -11,6 +12,13 @@ export default function Dogs(props) {
       .then((data) => setData(data))
   }, [])
 
+  const deleteAnimal = async (animal) => {
+    const id = animal._id
+
+    const response = await fetch(`/deleteAnimal?id=${id}`)
+
+    console.log('Deleted ', id)
+  }
   const listAnimals = data
     ? data.map((animal) => (
         <>
@@ -25,6 +33,7 @@ export default function Dogs(props) {
             <br />
             {animal.info}
             <br />
+            <Button onClick={() => deleteAnimal(animal)}>Delete</Button>
           </span>
         </>
       ))

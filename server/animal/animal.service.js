@@ -1,3 +1,5 @@
+const mongoose = require('mongoose')
+
 const addAnimal = (Animal) => (img, name, info) => {
   if (!img || !name || !info)
     throw new Error(
@@ -11,9 +13,14 @@ const listAnimals = (Animal) => () => {
   return Animal.find({})
 }
 
+const deleteAnimal = (Animal) => (id) => {
+  Animal.deleteOne({ _id: mongoose.Types.ObjectId(id) })
+}
+
 module.exports = (Animal) => {
   return {
     addAnimal: addAnimal(Animal),
     listAnimals: listAnimals(Animal),
+    deleteAnimal: deleteAnimal(Animal),
   }
 }
