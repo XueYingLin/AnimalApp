@@ -1,20 +1,13 @@
 const path = require('path')
 const express = require('express')
 var bodyParser = require('body-parser')
-var mongoose = require('mongoose')
 
 const AnimalService = require('./animal')
 
 const PORT = process.env.PORT || 3001
 const app = express()
 
-mongoose.Promise = global.Promise
-
-var uri = 'mongodb://localhost:27017/animals'
-mongoose.connect(uri, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-})
+const animal = require('./animal')
 
 app.use(
   bodyParser.urlencoded({
@@ -28,7 +21,7 @@ app.use(express.static(path.resolve(__dirname, '../client/build')))
 
 app.get('/listAnimals', async function (req, res, next) {
   try {
-    const animals = await AnimalService.listAnimals()
+    const animals = await animal.listAnimals()
     res.json(animals)
   } catch (e) {
     next(e)
@@ -41,9 +34,15 @@ app.get('/addAnimal', async function (req, res, next) {
   const name = req.query.name
   const info = req.query.info
 
+  const newAnimal = {
+    img,
+    name,
+    info,
+  }
+
   try {
-    const animals = await AnimalService.addAnimal(img, name, info)
-    res.json(animals)
+    await animal.addAnimal(newAnimal)
+    res.json(newAnimal)
   } catch (e) {
     next(e)
   }
@@ -52,7 +51,8 @@ app.get('/addAnimal', async function (req, res, next) {
 app.get('/deleteAnimal', async (req, res) => {
   const id = req.query.id
 
-  await AnimalService.deleteAnimal(id)
+  await animal.deleteAnimal(id)
+  res.json(id)
 
   console.log('Deleted', id)
 })

@@ -15,9 +15,15 @@ export default function Dogs(props) {
   const deleteAnimal = async (animal) => {
     const id = animal._id
 
-    const response = await fetch(`/deleteAnimal?id=${id}`)
-
-    console.log('Deleted ', id)
+    try {
+      console.log('Deleting animal ' + id)
+      const response = await fetch(`/deleteAnimal?id=${id}`)
+      const newData = data.filter((a) => a._id != id)
+      console.log(newData)
+      setData(newData)
+    } catch (e) {
+      console.log(e)
+    }
   }
   const listAnimals = data
     ? data.map((animal) => (
