@@ -28,7 +28,7 @@ app.use(express.static(path.resolve(__dirname, '../client/build')))
 
 app.get('/listAnimals', async function (req, res, next) {
   try {
-    const books = await AnimalService.listAnimals()
+    const animals = await AnimalService.listAnimals()
     res.json(animals)
   } catch (e) {
     next(e)

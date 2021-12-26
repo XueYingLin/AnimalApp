@@ -9,4 +9,4 @@ var animalSchema = new Schema({
 
 var animalModel = mongoose.model('animal', animalSchema, 'animal')
 
-module.export = animalModel
+module.exports = animalModel

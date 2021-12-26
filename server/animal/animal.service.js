@@ -1,4 +1,4 @@
-const addAnimal = (Dog) => (img, name, info) => {
+const addAnimal = (Animal) => (img, name, info) => {
   if (!img || !name || !info)
     throw new Error(
       'Missing Data. Please provide values for img, name, and info.'
@@ -14,6 +14,6 @@ const listAnimals = (Animal) => () => {
 module.exports = (Animal) => {
   return {
     addAnimal: addAnimal(Animal),
-    listDogs: listAnimals(Animal),
+    listAnimals: listAnimals(Animal),
   }
 }
